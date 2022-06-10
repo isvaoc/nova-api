@@ -4,7 +4,7 @@ const morgan = require('morgan');
 
 const app = express();
 
-const {PORT} = require('./config/config')
+const { PORT } = require('./config/config');
 
 app.set('port', PORT || 6501);
 
@@ -12,6 +12,7 @@ app.use(cors());
 app.use(morgan('dev'));
 app.use(express.json());
 app.use('/nova-api', require('./routes/activity'));
+app.use('/nova-api', require('./routes/project'));
 app.use(express.urlencoded({ extended: false }));
 
 module.exports = app;
