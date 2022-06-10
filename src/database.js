@@ -1,7 +1,7 @@
 const mongoose = require('mongoose');
+const { DB } = require('./config/config');
 
-mongoose.connect(
-    'mongodb+srv://improvers:dev123@cluster0.jo7bn.mongodb.net/nova?retryWrites=true&w=majority'
-)
-.then( res => console.log('DB connected'))
-.catch(error => console.err(error))
+mongoose
+  .connect(DB)
+  .then((res) => console.log('DB connected'))
+  .catch((error) => console.err(error));
