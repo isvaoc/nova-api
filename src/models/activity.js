@@ -6,7 +6,7 @@ const Activity = new Schema(
         ActivityID:{ type: Number, required: true }, 
         CategoryName:{ type: String, required: true }, 
         Comments: { type: String, required: true }, 
-        EmployeeID: { type: Number, required: true }, 
+        EmployeeID: { type: String, required: true }, 
         ProjectColor: { type: String, required: true }, 
         ProjectID: { type: Number, required: true }, 
         ProjectName: { type: String, required: true }, 
