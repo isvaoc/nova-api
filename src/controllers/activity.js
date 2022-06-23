@@ -1,9 +1,12 @@
-const Activity = require('../models/activity');
+const Activity = require("../models/activity");
 
 const ActivityCtrl = {
   getActivity: async (req, res, next) => {
+    const employee = req.query.employee;
     try {
-      const activities = await Activity.find();
+      let activities;
+      if (employee) activities = await Activity.find({ EmployeeID: employee });
+      else activities = await Activity.find();
       res.json(activities);
     } catch (error) {
       next(error);
@@ -24,7 +27,7 @@ const ActivityCtrl = {
     try {
       const newActivity = new Activity(req.body);
       await newActivity.save();
-      res.send({ message: 'The activity has been created successfully' });
+      res.send({ message: "The activity has been created successfully" });
     } catch (error) {
       next(error);
     }
@@ -34,14 +37,14 @@ const ActivityCtrl = {
     const id = req.params.id;
     const body = req.body;
     await Activity.findByIdAndUpdate(id, body);
-    res.json({ message: 'The activity has been updated successfully ' });
+    res.json({ message: "The activity has been updated successfully " });
   },
 
   deleteActivity: async (req, res, next) => {
     try {
       const id = req.params.id;
       await Activity.findByIdAndDelete(id);
-      res.json({ message: 'The activity has been deleted succesfully' });
+      res.json({ message: "The activity has been deleted succesfully" });
     } catch (error) {
       next(error);
     }
