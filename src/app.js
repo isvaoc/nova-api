@@ -13,6 +13,7 @@ app.use(morgan('dev'));
 app.use(express.json());
 app.use('/nova-api', require('./routes/activity'));
 app.use('/nova-api', require('./routes/project'));
+app.use('/nova-api', require('./routes/auth'));
 app.use(express.urlencoded({ extended: false }));
 
 module.exports = app;
